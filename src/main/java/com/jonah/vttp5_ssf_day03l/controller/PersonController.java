@@ -62,11 +62,20 @@ public class PersonController {
 
 
     @GetMapping("/update/{person-id}")
-    public String updatePerson(@PathVariable("person-id") String personId){
+    public String updatePerson(@PathVariable("person-id") String personId, Model model){
         Person p = personService.findById(personId);
-        personService.delete(p);
-        return "redirect:/persons";
+        model.addAttribute("person", p);
+        return "personupdate";
         
+    }
+
+    @PostMapping("/update")
+    public String postUpdateForm(@Valid @ModelAttribute ("person") Person person, BindingResult result, Model model){
+        if (result.hasErrors())
+            return "personupdate";
+
+        personService.update(person);
+        return "redirect:/persons";
     }
 
     }
