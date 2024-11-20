@@ -1,6 +1,9 @@
 package com.jonah.vttp5_ssf_day03l.repo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +16,15 @@ public class PersonRepo {
 
 
     private List<Person> persons = new ArrayList<>();
+
+    public PersonRepo() throws ParseException {
+
+        String birthDate = "1999-12-02";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date birthday = sdf.parse(birthDate);
+        persons.add(new Person("dan","lim","danlim@outlook.com",1003, birthday));
+    }
+
     public List<Person> findAll(){
         return persons;
     }

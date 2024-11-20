@@ -1,7 +1,7 @@
 package com.jonah.vttp5_ssf_day03l.model;
 
-import java.sql.Date;
-import java.time.LocalDate;
+
+import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -45,12 +45,13 @@ public class Person {
     private Date dob;
 
 
-    public Person(String firstName, String lastName, String email, Integer salary){
+    public Person(String firstName, String lastName, String email, Integer salary, Date dob){
         this.id = UUID.randomUUID().toString(); //This produces a random unique id
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.salary = salary;
+        this.dob = dob;
 
     }
 
