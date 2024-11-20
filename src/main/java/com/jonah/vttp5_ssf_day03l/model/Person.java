@@ -1,9 +1,15 @@
 package com.jonah.vttp5_ssf_day03l.model;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +36,13 @@ public class Person {
     private Integer salary;
 
     @Email(message = "email must be abc@xyz.com")
+    @NotBlank(message = "email is required")
     private String email;
+
+    @Past(message = "date of birth must be past")
+    @NotNull(message = "date of birth must be set")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dob;
 
 
     public Person(String firstName, String lastName, String email, Integer salary){
