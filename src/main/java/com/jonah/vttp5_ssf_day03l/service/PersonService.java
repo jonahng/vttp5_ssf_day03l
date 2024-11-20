@@ -29,4 +29,9 @@ public class PersonService {
     public Boolean update(Person person){
         return personRepo.update(person);
     }
+
+    public Person findById(String personId){
+        return personRepo.findById(personId);
+    }
+    //add the findbyId here
 }

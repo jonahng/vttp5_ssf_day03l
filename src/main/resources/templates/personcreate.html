@@ -9,18 +9,28 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>
-    <img width="40%" height="20%" src="https://picsum.photos/200">
+
     <main>
         <h1>create person</h1>  
         <p>input</p>
-        <form method ="post" data-th-action="@{/persons/create}">
+        <form method ="post" data-th-action="@{/persons/create}" th:object ="${person}">
           <label>PLEASE FILL IN ALL FIELDS</label>
-          <input type = "text" class = "form-control" name = "*{firstName}" placeholder = "Enter first name here">
-          <input type = "text" class = "form-control" name = "*{lastName}" placeholder = "Enter last name here">
-          <input type = "text" class = "form-control" name = "*{email}" placeholder = "Enter email here">
-          <input type = "number" class = "form-control" name = "*{salary}" placeholder = "Enter salary here">
-          <input type = "date" class = "form-control" name = "*{dob}" placeholder = "Enter birth date here">
 
+          
+          <input type = "text" class = "form-control" name ="firstName" th:field="*{firstName}" placeholder = "Enter first name here">
+          <div class ="textcolor-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+
+          <input type = "text" class = "form-control" name ="lastName" th:field= "*{lastName}" placeholder = "Enter last name here">
+          <div class ="textcolor-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+
+          <input type = "text" class = "form-control" name ="email"  th:field="*{email}" placeholder = "Enter email here">
+          <div class ="textcolor-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+          <input type = "number" class = "form-control" name="salary"  th:field= "*{salary}" placeholder = "Enter salary here">
+         <div class ="textcolor-danger" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></div>
+
+          <input type = "date" class = "form-control" name = "dob"  th:field="*{dob}" placeholder = "Enter birth date here">
+          <div class ="textcolor-danger" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></div>
 
           <button type = "submit">submit?</button>
 

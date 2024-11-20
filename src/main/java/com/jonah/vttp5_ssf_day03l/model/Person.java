@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Person {
     
 
-    @NotNull(message = "id must be auto generate")
+    //@NotNull(message = "id must be auto generate")
     private String id;
 
     @NotEmpty(message = "first name needed")

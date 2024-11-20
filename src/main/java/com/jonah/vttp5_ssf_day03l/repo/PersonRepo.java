@@ -23,10 +23,18 @@ public class PersonRepo {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date birthday = sdf.parse(birthDate);
         persons.add(new Person("dan","lim","danlim@outlook.com",1003, birthday));
+
+        persons.add(new Person("woddle","int","wowo@outlook.com",3002, birthday));
     }
 
     public List<Person> findAll(){
         return persons;
+    }
+
+//Not sure about this part. did not catch it during class
+    public Person findById(String personId){
+        Person foundPerson = persons.stream().filter(p -> p.getId().equals(personId)).findFirst().get();
+        return foundPerson;
     }
 
     public Boolean create(Person person){

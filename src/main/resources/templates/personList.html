@@ -17,7 +17,7 @@
         <h1>List of people</h1>  
         <p>Text</p>
 
-        <table>
+        <table class="table table-striped">
           <thead>
             <tr>
               <th>id</th>
@@ -38,6 +38,9 @@
                 <td data-th-text ="${person.salary}"></td>
 
                 <td data-th-text ="${#dates.format(person.dob, 'dd/MMM/yyyy HH:mm')}"></td>
+
+                <td><a class="btn btn-danger" th:ref="@{/persons/delete/{person-id}(person-id=${person.id})}">Delete</a></td>
+                <td><a class="btn btn-success" th:ref="@{/persons/edit/{person-id}{person-id=${person.id}}}">Edit</a></td>
               </p>
               
               <p data-th-if="${state.size le 0}">
