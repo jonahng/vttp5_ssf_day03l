@@ -16,6 +16,8 @@
         <form method ="post" data-th-action="@{/persons/update}" th:object ="${person}">
           <label>PLEASE FILL IN ALL FIELDS</label>
 
+          <input type = "text" class = "form-control" name ="id" th:field="*{id}" placeholder = "id" readonly >
+
           
           <input type = "text" class = "form-control" name ="firstName" th:field="*{firstName}" placeholder = "Enter first name here">
           <div class ="textcolor-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
